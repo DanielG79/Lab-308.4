@@ -56,3 +56,24 @@ console.log(ageValues) // ['25', '30', '35']
 
 const averageAge = transformData(data, 'age')
 console.log(averageAge) // 30
+
+// Part 2: Expanding Functionality
+
+function parseCSV(csvString) {
+    const rows = csvString.trim().split('\n')
+    const headers = rows[0].split(',')
+    const numColumns = headers.length
+
+    const data = []
+    for (let i = 1; i < rows.length; i++) {
+        const row = rows[i].split(',')
+        const rowData = []
+        for (let j = 0; j < numColumns; j++) {
+            rowData.push(row[j])
+        }
+        data.push(rowData)
+    }
+
+    return { headers, data }
+}
+
