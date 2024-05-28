@@ -136,3 +136,41 @@ console.log(dataObjects)
     { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
     { id: "98", name: "Bill", occupation: "Doctor's Assistant", age: "26" }
 ]
+
+// Part 4: Sorting and Manipulating Data
+
+let dataObjects = [
+    { id: "42", name: "Bruce", occupation: "Knight", age: "41" },
+    { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
+    { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
+    { id: "98", name: "Bill", occupation: "Doctor's Assistant", age: "26" }
+];
+
+// 1. Remove the last element from the sorted array
+dataObjects.pop();
+
+// 2. Insert the following object at index 1
+dataObjects.splice(1, 0, { id: "48", name: "Barry", occupation: "Runner", age: "25" });
+
+// 3. Add the following object to the end of the array
+dataObjects.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" });
+
+console.log(dataObjects);
+/*
+[
+    { id: "42", name: "Bruce", occupation: "Knight", age: "41" },
+    { id: "48", name: "Barry", occupation: "Runner", age: "25" },
+    { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
+    { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
+    { id: "7", name: "Bilbo", occupation: "None", age: "111" }
+]
+*/
+
+// 4. Calculate the average age of the group
+let totalAge = 0;
+for (const obj of dataObjects) {
+    totalAge += parseInt(obj.age);
+}
+const averageAge = totalAge / dataObjects.length;
+console.log(`The average age of the group is: ${averageAge.toFixed(2)}`);
+// The average age of the group is: 52.00
