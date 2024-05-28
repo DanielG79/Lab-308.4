@@ -77,3 +77,62 @@ function parseCSV(csvString) {
     return { headers, data }
 }
 
+const { headers, data } = parseCSV(csvString)
+
+console.log(headers) // ['ID', 'Name', 'Occupation', 'Age']
+console.log(data)
+/*
+[
+    ['42', 'Bruce', 'Knight', '41'],
+    ['57', 'Bob', 'Fry Cook', '19'],
+    ['63', 'Blaine', 'Quiz Master', '58'],
+    ['98', 'Bill', 'Doctor\'s Assistant', '26']
+]
+*/
+
+// Access a specific value
+console.log(data[1][1]) // 'Bob'
+
+// Iterate over the data
+for (const row of data) {
+    console.log(row.join(', '))
+}
+/*
+42, Bruce, Knight, 41
+57, Bob, Fry Cook, 19
+63, Blaine, Quiz Master, 58
+98, Bill, Doctor's Assistant, 26
+*/
+
+
+// Part 3: Transforming Data
+
+function transformDataToObjects(data) {
+    const objects = []
+
+    for (let i = 1; i < data.length; i++) {
+        const row = data[i]
+        const obj = {}
+
+        for (let j = 0; j < row.length; j++) {
+            const key = data[0][j].toLowerCase()
+            obj[key] = row[j]
+        }
+
+        objects.push(obj)
+    }
+
+    return objects
+}
+
+const { headers, data } = parseCSV(csvString)
+const dataObjects = transformDataToObjects(data)
+
+console.log(dataObjects)
+
+[
+    { id: "42", name: "Bruce", occupation: "Knight", age: "41" },
+    { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
+    { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
+    { id: "98", name: "Bill", occupation: "Doctor's Assistant", age: "26" }
+]
