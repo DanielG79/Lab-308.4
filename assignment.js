@@ -174,3 +174,35 @@ for (const obj of dataObjects) {
 const averageAge = totalAge / dataObjects.length;
 console.log(`The average age of the group is: ${averageAge.toFixed(2)}`);
 // The average age of the group is: 52.00
+
+// Transform the data into CSV format
+let csvData = 'id,name,occupation,age\n';
+for (const obj of dataObjects) {
+    csvData += `${obj.id},${obj.name},${obj.occupation},${obj.age}\n`;
+}
+
+console.log(csvData);
+/*
+id,name,occupation,age
+42,Bruce,Knight,41
+48,Barry,Runner,25
+57,Bob,Fry Cook,19
+63,Blaine,Quiz Master,58
+7,Bilbo,None,111
+*/
+
+const { Parser } = require('json2csv');
+
+const fields = ['id', 'name', 'occupation', 'age'];
+const parser = new Parser({ fields });
+const csv = parser.parse(dataObjects);
+
+console.log(csv);
+/*
+id,name,occupation,age
+42,Bruce,Knight,41
+48,Barry,Runner,25
+57,Bob,Fry Cook,19
+63,Blaine,Quiz Master,58
+7,Bilbo,None,111
+*/
